@@ -1,3 +1,6 @@
+# English to morse data 
+from typing import List
+
 ENGLISH_TO_MORSE = {'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.', 'G': '--.',
                     'H': '....',
                     'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---',
@@ -8,24 +11,23 @@ ENGLISH_TO_MORSE = {'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', '
                     '4': '....-',
                     '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.', ' ': ' '}
 
+# Creating the english to morse dictionary
 MORSE_TO_ENGLISH = dict()
-
 for key in ENGLISH_TO_MORSE:
     MORSE_TO_ENGLISH[ENGLISH_TO_MORSE[key]] = key
 
 
 # Encrypt
 def encrpyt(english_str: str):
-    datas = [alphabet for alphabet in english_str.upper()]
+    datas: List[str] = [alphabet for alphabet in english_str.upper()]
     morse_data = str()  # to store the morse code
     for data in datas:
         morse_data += ENGLISH_TO_MORSE[data]
     return morse_data
 
 
-# Decrypt
-def decrpyt(morse_str: str):
-    # Creating  morse to english dictionary
+# Decrypt - Creating  morse to english dictionary
+def decrypt(morse_str: str):
     # after each alphabet give a space
     morse_str = morse_str.split()
     english_str = str()
@@ -54,7 +56,7 @@ if __name__ == '__main__':
             datas = input('\nEnter the Code:\tAfter each entry keep a space\n>> ')
             decrypted_value = str()
             for data in datas.split():
-                decrypted_value += decrpyt(morse_str=data)
+                decrypted_value += decrypt(morse_str=data)
             print(decrypted_value)
 
         # Exit
@@ -62,5 +64,5 @@ if __name__ == '__main__':
             print('Closing the program......................')
             break
 
-        else :
+        else:
             print('Wrong Input!!!')
