@@ -35,5 +35,32 @@ def decrpyt(morse_str: str):
 
 
 if __name__ == '__main__':
-    print(encrpyt(english_str='My name is Nilay'))
-    print(decrpyt(morse_str='-- -.--'))
+    while True:
+        # User input
+        print('''_____________MORSE CODE CONVERTER________________
+    1) ENCRYPT : CONVERT TEXT TO MORSE CODE 
+    2) DECRYPT : CONVERT MORSE CODE TO TEXT [ADD SPACE AFTER EACH ALPHABET]
+    3) EXIT   
+        ''')
+        user_input = input('>> ').upper().strip()
+
+        # Text to morse code
+        if user_input == 'ENCRYPT':
+            data = input('\nEnter the String:\n>> ')
+            print(encrpyt(english_str=data))
+
+        # Morse to Text code
+        elif user_input == 'DECRYPT':
+            datas = input('\nEnter the Code:\tAfter each entry keep a space\n>> ')
+            decrypted_value = str()
+            for data in datas.split():
+                decrypted_value += decrpyt(morse_str=data)
+            print(decrypted_value)
+
+        # Exit
+        elif user_input == 'EXIT':
+            print('Closing the program......................')
+            break
+
+        else :
+            print('Wrong Input!!!')
